@@ -1,0 +1,17 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<center><h1>MY REALLY COOL BLOG</h1></center>
+<p>Blog Count: {{ posts.count }} blog{{ posts.count|pluralize }}</p><hr>
+{% for post in posts %}
+
+<a href="{% url 'blog:detail' post.id %}"><h3>{{post.title}}</h3></a>
+<h5>{{ post.date|date:'M d Y'|upper }}</h5>
+<p>{{ post.description|striptags|truncatechars:100 }}</p>
+
+{% endfor %}
+
+{% endblock %}
